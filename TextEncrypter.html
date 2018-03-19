@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<HTML>
+    <HEAD>
+        <TITLE>Encryption</TITLE>
+    </HEAD>
+    <BODY>
+        <center>
+            <h1 style="font-Size: 70px">Text Encrypter  <p1 style="font-Size: 15px">v1.1</p1></h1>
+            
+        </center>
+            <p align="right" style="font-Size: 25px">By Luca & Beau</p>
+        <SCRIPT>
+        //Design
+        document.body.style.backgroundImage = "url(https://wallpapercave.com/wp/EQtGhHV.jpg)";
+        document.body.style.color = "white";
+        document.body.style.marginLeft = "50px";
+        document.body.style.marginRight = "50px";
+        document.body.style.fontSize = "25px";
+// ###################################################################
+// Naam programma: Text Encrypter
+// Beschrijving: text versleuteling
+// Invoer:
+//
+//
+// Uitvoer:
+//
+//
+// Versie: 1.1
+// Auteur: Beau en Luca
+// Historie:
+// Datum        Wijziging
+// 10.03.18     Een bug opgelost waardoor "i" niet in/als een sleutel gebruikt kon worden
+//                Een heleboel nieuwe characters toegevoegd toegevoegd
+//                De manieren van het encrypten van een spatie is verandert
+// 
+// 08.03.18     initial release
+//
+// Pseudocode:
+/*
+    vraag voor tekst
+    IF tekst lengte is groter dan 0 THEN
+        //
+    ELSE
+        error
+        vraag opnieuw voor tekst
+    ENDIF
+    
+    WHILE index is kleiner dan woord lengte
+        pak een letter uit het woord
+        vraag de index van die letter uit alfabet
+        kijk naar bij behorende letter sleutel en pak de letter uit die kollom met de zelfde index
+        voeg nieuwe letter toe aan nieuw word
+        index + 1
+    ENDWHILE
+    
+    schrijf nieuwe word naar scherm
+    
+*/
+// ###################################################################
+
+/* Hieronder jouw javascript hoofdprogramma regels plaatsen */
+            // Tabel voor letter encryptie
+            var a = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":"]
+            var b = ["b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a"];
+            var c = ["c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b"];
+            var d = ["d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c"];
+            var e = ["e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d"];
+            var f = ["f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e"];
+            var g = ["g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f"];
+            var h = ["h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g"];
+            var i = ["i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h"];
+            var j = ["j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i"];
+            var k = ["k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+            var l = ["l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"];
+            var m = ["m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
+            var n = ["n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"];
+            var o = ["o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"];
+            var p = ["p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o"];
+            var q = ["q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p"];
+            var r = ["r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"];
+            var s = ["s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r"];
+            var t = ["t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s"];
+            var u = ["u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t"];
+            var v = ["v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u"];
+            var w = ["w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v"];
+            var x = ["x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w"];
+            var y = ["y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x"];
+            var z = ["z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "?", "/", "(", ")", "*", "&", "^", "%", "$", "#", "@", "!", "~", "`", "'", "<", ">", "+", "=", "-", "_", "{", "}", "[", "]", "\"", "\\", "€", "¤", ";", ":", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"];
+            
+            // Key
+            var keyDic = ["codename", "encryptie", "encrypter", "sleutel", "versleuteling", "cipher", "school"];
+            var key = keyDic[Math.floor((Math.random() * 7) + 0)];
+            var keyIndex = 0;
+            var keyLetter = "";
+            
+            // Word
+            var word = prompt("Type a word or sentence");
+            // Check if word isn't empty
+            while (word.length === 0)
+            {
+                window.alert("You didn't give any word or text");
+                word = prompt("Type a word or sentence");
+            }
+            word = word.toLowerCase();
+            var length = word.length
+            var newWord = "";
+            var int = 0;
+            var wordIndex = 0;
+            
+            // Encrypted Letter/Spatie
+            var newLetter = "";
+            var indexex = "";
+            
+            // For loop to encrypt each letter
+            for (int = 0; int < length; int++)
+                {    
+                    //Check if KeyIndex isn't greather than the keyword
+                    if (keyIndex == key.length)
+                    {
+                        keyIndex = 0;
+                    }
+                    keyLetter = key[keyIndex]                        
+                                        
+                    var letter = word[int];
+                    wordIndex = a.indexOf(letter);
+                    
+                    //Check keyLetter to pick a row                    
+                    if (keyLetter === "a")
+                    {
+                        newLetter = a[wordIndex];
+                    }
+                    else if (keyLetter === "b")
+                    {
+                        newLetter = b[wordIndex];
+                    }
+                    else if (keyLetter === "c")
+                    {
+                        newLetter = c[wordIndex];
+                    }
+                    else if (keyLetter === "d")
+                    {
+                        newLetter = d[wordIndex];
+                    }
+                    else if (keyLetter === "e")
+                    {
+                        newLetter = e[wordIndex];
+                    }
+                    else if (keyLetter === "f")
+                    {
+                        newLetter = f[wordIndex];
+                    }
+                    else if (keyLetter === "g")
+                    {
+                        newLetter = g[wordIndex];
+                    }
+                    else if (keyLetter === "h")
+                    {
+                        newLetter = h[wordIndex];
+                    }
+                    else if (keyLetter === "i")
+                    {
+                        newLetter = i[wordIndex];
+                    }
+                    else if (keyLetter === "j")
+                    {
+                        newLetter = j[wordIndex];
+                    }
+                    else if (keyLetter === "k")
+                    {
+                        newLetter = k[wordIndex];
+                    }
+                    else if (keyLetter === "l")
+                    {
+                        newLetter = l[wordIndex];
+                    }
+                    else if (keyLetter === "m")
+                    {
+                        newLetter = m[wordIndex];
+                    }
+                    else if (keyLetter === "n")
+                    {
+                        newLetter = n[wordIndex];
+                    }
+                    else if (keyLetter === "o")
+                    {
+                        newLetter = o[wordIndex];
+                    }
+                    else if (keyLetter === "p")
+                    {
+                        newLetter = p[wordIndex];
+                    }
+                    else if (keyLetter === "q")
+                    {
+                        newLetter = q[wordIndex];
+                    }
+                    else if (keyLetter === "r")
+                    {
+                        newLetter = r[wordIndex];
+                    }
+                    else if (keyLetter === "s")
+                    {
+                        newLetter = s[wordIndex];
+                    }
+                    else if (keyLetter === "t")
+                    {
+                        newLetter = t[wordIndex];
+                    }
+                    else if (keyLetter === "u")
+                    {
+                        newLetter = u[wordIndex];
+                    }
+                    else if (keyLetter === "v")
+                    {
+                        newLetter = v[wordIndex];
+                    }
+                    else if (keyLetter === "w")
+                    {
+                        newLetter = w[wordIndex];
+                    }
+                    else if (keyLetter === "z")
+                    {
+                        newLetter = z[wordIndex];
+                    }
+                    else if (keyLetter === "y")
+                    {
+                        newLetter = y[wordIndex];
+                    }
+                    else if (keyLetter === "z")
+                    {
+                        newLetter = z[wordIndex];
+                    }
+                    
+                    
+                    // DebugIndexPart
+                    // indexex = indexex + wordIndex+ letter + keyIndex + newLetter + " || ";
+                    
+                    // Add the encrypted letter to the word or sentence
+                    newWord = newWord + newLetter;
+                     
+                    // KeyIndex plus one
+                    keyIndex++;
+                }
+                
+                // Output the results
+                document.write("</br></br>Key: " + key, "</br>");
+                document.write("Given word: " + word, "</br>");
+                document.write("Encrypted: " + newWord, "</br>");
+                var download = "Click Here"
+                document.write("</br></br>", download.link("https://cdn.discordapp.com/attachments/390060948549009411/423495595551096852/TextEditor_--_By_2CAN0.exe"), " to download the TextEditor I made with this encryption");
+        </SCRIPT>
+
+    </BODY>
+</HTML>
